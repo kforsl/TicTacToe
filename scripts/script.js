@@ -5,7 +5,7 @@
 let oGameData = {};
 
 initGlobalObject();
-checkWinner('X')
+checkForGameOver()
 
 /**
  * Initerar det globala objektet med de attribut som ni skall använda er av.
@@ -16,7 +16,7 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
-    oGameData.gameField = ['', '', '', '', '', '', '', '', ''];
+    oGameData.gameField = ['O', 'O', 'O', '', '', '', '', '', ''];
 
     /* Testdata för att testa rättningslösning */
     //oGameData.gameField = ['X', 'X', 'X', '', '', '', '', '', ''];
@@ -77,9 +77,9 @@ function checkForGameOver() {
         return 2;
     }
     //Kontrollerar om spelet är oavgjort, returnerar isåfall 3
-    if (checkForDraw()) {
-        return 3;
-    }
+    // if (checkForDraw()) {
+    // return 3;
+    // }
     //Annars returneras 0, och spelet fortlöper
     else {
         return 0;
@@ -118,7 +118,5 @@ function checkWinner(playerIn) {
         }
         inRow = 0;
     }
-
-    console.log(isAWinner)
     return isAWinner
 }
