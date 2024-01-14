@@ -16,9 +16,9 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
-
+  
     oGameData.gameField = ['', '', '', '', '', '', '', '', ''];
-
+  
     /* Testdata för att testa rättningslösning */
     //oGameData.gameField = ['X', 'X', 'X', '', '', '', '', '', ''];
     //oGameData.gameField = ['X', '', '', 'X', '', '', 'X', '', ''];
@@ -33,6 +33,7 @@ function initGlobalObject() {
     oGameData.playerTwo = "O";
 
     //Kan anta värdet X eller O och indikerar vilken spelare som för tillfället skall lägga sin "bricka".
+
     oGameData.currentPlayer = "";
 
     //Nickname för spelare ett som tilldelas från ett formulärelement,
@@ -87,6 +88,40 @@ function checkForGameOver() {
     }
 }
 
+//Skapa en array av alla vinnande kombinationer.
+//Skapa en flagga för isWinner.
+//Loopa igenom alla winningCombos.
+//I varje loop kontrollerar ni om alla platser i oGameData.GameField 
+//som motsvarar nuvarande combo innehåller playerIn. Om sant, ändra värdet på flaggan.
+//Returnera flaggan isWinner
+function checkWinner(playerIn) {
+    const winningBoard = [
+        [0, 1, 2],
+        [0, 3, 6],
+        [0, 4, 8],
+        [3, 4, 5],
+        [6, 7, 8],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6]
+    ];
+
+    let isAWinner = false;
+    let inRow = 0;
+
+    for (let i = 0; i < winningBoard.length; i++) {
+        for (let j = 0; j < winningBoard[i].length; j++) {
+            if (oGameData.gameField[winningBoard[i][j]] === playerIn) {
+                inRow++
+            }
+        }
+        if (inRow === 3) {
+            isAWinner = true;
+        }
+        inRow = 0;
+    }
+    return isAWinner
+}
 
 //Kontrollera om alla platser i oGameData.GameField är fyllda. Om sant returnera true, annars false.
 function checkForDraw() {
@@ -103,4 +138,3 @@ function checkForDraw() {
     }
     return isDraw
 }
-
