@@ -5,6 +5,7 @@
 let oGameData = {};
 
 initGlobalObject();
+checkWinner('X')
 
 /**
  * Initerar det globala objektet med de attribut som ni skall använda er av.
@@ -31,7 +32,7 @@ function initGlobalObject() {
     oGameData.playerTwo = "O";
 
     //Kan anta värdet X eller O och indikerar vilken spelare som för tillfället skall lägga sin "bricka".
-    oGameData.currentPlayer = "";
+    oGameData.currentPlayer = "X";
 
     //Nickname för spelare ett som tilldelas från ett formulärelement,
     oGameData.nickNamePlayerOne = "";
@@ -92,5 +93,32 @@ function checkForGameOver() {
 //som motsvarar nuvarande combo innehåller playerIn. Om sant, ändra värdet på flaggan.
 //Returnera flaggan isWinner
 function checkWinner(playerIn) {
+    const winningBoard = [
+        [0, 1, 2],
+        [0, 3, 6],
+        [0, 4, 8],
+        [3, 4, 5],
+        [6, 7, 8],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6]
+    ];
 
+    let isAWinner = false;
+    let inRow = 0;
+
+    for (let i = 0; i < winningBoard.length; i++) {
+        for (let j = 0; j < winningBoard[i].length; j++) {
+            if (oGameData.gameField[winningBoard[i][j]] === playerIn) {
+                inRow++
+            }
+        }
+        if (inRow === 3) {
+            isAWinner = true;
+        }
+        inRow = 0;
+    }
+
+    console.log(isAWinner)
+    return isAWinner
 }
