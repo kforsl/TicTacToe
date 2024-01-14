@@ -16,8 +16,9 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
+  
     oGameData.gameField = ['', '', '', '', '', '', '', '', ''];
-
+  
     /* Testdata för att testa rättningslösning */
     //oGameData.gameField = ['X', 'X', 'X', '', '', '', '', '', ''];
     //oGameData.gameField = ['X', '', '', 'X', '', '', 'X', '', ''];
@@ -32,7 +33,8 @@ function initGlobalObject() {
     oGameData.playerTwo = "O";
 
     //Kan anta värdet X eller O och indikerar vilken spelare som för tillfället skall lägga sin "bricka".
-    oGameData.currentPlayer = "X";
+
+    oGameData.currentPlayer = "";
 
     //Nickname för spelare ett som tilldelas från ett formulärelement,
     oGameData.nickNamePlayerOne = "";
@@ -77,9 +79,9 @@ function checkForGameOver() {
         return 2;
     }
     //Kontrollerar om spelet är oavgjort, returnerar isåfall 3
-    // if (checkForDraw()) {
-    // return 3;
-    // }
+    if (checkForDraw()) {
+        return 3;
+    }
     //Annars returneras 0, och spelet fortlöper
     else {
         return 0;
@@ -119,4 +121,20 @@ function checkWinner(playerIn) {
         inRow = 0;
     }
     return isAWinner
+}
+
+//Kontrollera om alla platser i oGameData.GameField är fyllda. Om sant returnera true, annars false.
+function checkForDraw() {
+    let isDraw = false;
+    let playedFields = 0
+
+    for (let i = 0; i < oGameData.gameField.length; i++) {
+        if (oGameData.gameField[i] !== "") {
+            playedFields++
+        }
+    }
+    if (playedFields === oGameData.gameField.length) {
+        isDraw = true;
+    }
+    return isDraw
 }
