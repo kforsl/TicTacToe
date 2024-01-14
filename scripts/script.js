@@ -5,6 +5,7 @@
 let oGameData = {};
 
 initGlobalObject();
+checkForGameOver()
 
 /**
  * Initerar det globala objektet med de attribut som ni skall använda er av.
@@ -15,6 +16,7 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
+
     oGameData.gameField = ['', '', '', '', '', '', '', '', ''];
 
     /* Testdata för att testa rättningslösning */
@@ -88,6 +90,17 @@ function checkForGameOver() {
 
 //Kontrollera om alla platser i oGameData.GameField är fyllda. Om sant returnera true, annars false.
 function checkForDraw() {
+    let isDraw = false;
+    let playedFields = 0
 
+    for (let i = 0; i < oGameData.gameField.length; i++) {
+        if (oGameData.gameField[i] !== "") {
+            playedFields++
+        }
+    }
+    if (playedFields === oGameData.gameField.length) {
+        isDraw = true;
+    }
+    return isDraw
 }
 
