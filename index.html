@@ -77,6 +77,25 @@
 
 
     <script src="./scripts/script.js"></script>
+    <script>
+        //Testutskrifter
+        console.log(oGameData);
+        console.log(oGameData.gameField);
+        console.log(checkForGameOver());
+
+        if (checkForGameOver() === 1) {
+            console.log("Spelare X har vunnit!");
+        }
+        else if (checkForGameOver() === 2) {
+            console.log("Spelare O har vunnit!");
+        }
+        else if (checkForGameOver() === 3) {
+            console.log("Spelet slutade oavgjort");
+        }
+        else {
+            console.log("Spelet fortsätter");
+        }
+    </script>
 </body>
 
 </html>

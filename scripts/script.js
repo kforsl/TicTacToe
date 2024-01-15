@@ -5,7 +5,7 @@
 let oGameData = {};
 
 initGlobalObject();
-checkForGameOver()
+checkForGameOver();
 
 /**
  * Initerar det globala objektet med de attribut som ni skall använda er av.
@@ -16,15 +16,15 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
-  
+
     oGameData.gameField = ['', '', '', '', '', '', '', '', ''];
-  
+
     /* Testdata för att testa rättningslösning */
     //oGameData.gameField = ['X', 'X', 'X', '', '', '', '', '', ''];
     //oGameData.gameField = ['X', '', '', 'X', '', '', 'X', '', ''];
     //oGameData.gameField = ['X', '', '', '', 'X', '', '', '', 'X'];
     //oGameData.gameField = ['', '', 'X', '', 'X', '', 'X', '', ''];
-    //oGameData.gameField = ['X', 'O', 'X', '0', 'X', 'O', 'O', 'X', 'O'];
+    // oGameData.gameField = ['X', 'O', 'X', '0', 'X', 'O', 'O', 'X', 'O'];
 
     //Indikerar tecknet som skall användas för spelare ett.
     oGameData.playerOne = "X";
@@ -34,7 +34,7 @@ function initGlobalObject() {
 
     //Kan anta värdet X eller O och indikerar vilken spelare som för tillfället skall lägga sin "bricka".
 
-    oGameData.currentPlayer = "";
+    oGameData.currentPlayer = "O";
 
     //Nickname för spelare ett som tilldelas från ett formulärelement,
     oGameData.nickNamePlayerOne = "";
