@@ -34,7 +34,7 @@ function initGlobalObject() {
 
     //Kan anta värdet X eller O och indikerar vilken spelare som för tillfället skall lägga sin "bricka".
 
-    oGameData.currentPlayer = "O";
+    oGameData.currentPlayer = "";
 
     //Nickname för spelare ett som tilldelas från ett formulärelement,
     oGameData.nickNamePlayerOne = "";
